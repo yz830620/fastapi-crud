@@ -46,6 +46,7 @@ def test_read_note_incorrect_id(test_app, monkeypatch):
     assert response.status_code == 404
     assert response.json()["detail"] == "Note not found"
 
+
 def test_read_all_notes(test_app, monkeypatch):
     test_data = [
         {"title": "something", "description": "something else", "id": 1},
