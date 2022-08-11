@@ -45,7 +45,7 @@ async def read_all_note():
     return await crud.get_all()
 
 @router.put("/{id}/", response_model=NoteDB)
-async def update_note(id: int, payload: NoteSchema):
+async def update_note(id: int = Path(..., gt=0), payload: NoteSchema):
   """route for update the note
     - Parameters:
       - id: int, id to update
