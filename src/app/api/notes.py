@@ -1,6 +1,6 @@
 from typing import List
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Path
 
 from app.api import crud
 from app.api.models import NoteDB, NoteSchema
@@ -28,7 +28,7 @@ async def create_note(payload: NoteSchema):
 
 
 @router.get("/{id}/", response_model=NoteDB)
-async def read_note(id: int):
+async def read_note(id: int = Path(..., gt=0)):
     """route for read single note
       - Path parameter:
         - id: id number for the note
