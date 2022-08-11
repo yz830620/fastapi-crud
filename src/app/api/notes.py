@@ -67,7 +67,7 @@ async def update_note(id: int = Path(..., gt=0), payload: NoteSchema):
   return response_object
 
 @router.delete("/{id}/", response_model=NoteDB)
-async def delete_note(id: int):
+async def delete_note(id: int = Path(..., gt=0)):
   """route for update the note
     - Parameters:
       - id: int, id to update
